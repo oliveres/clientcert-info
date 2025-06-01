@@ -175,7 +175,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-              🔐 SSL Client Test
+              🔐 Client SSL certificate test
             </h1>
           </div>
           
@@ -199,7 +199,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
-              🔐 SSL Client Test
+              🔐 Client SSL certificate test
             </h1>
           </div>
           
@@ -265,7 +265,7 @@ export default function Home() {
         {/* Header */}
         <div className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-            🔐 SSL Client Test
+            🔐 Client SSL certificate test
           </h1>
           <div className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border ${
             hasValidationResult 

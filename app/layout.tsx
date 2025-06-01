@@ -1,7 +1,7 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'SSL Client Test',
+  title: 'Client SSL certificate test',
   description: 'Test application for client SSL certificates',
 }
 

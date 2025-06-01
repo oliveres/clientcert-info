@@ -1,4 +1,4 @@
-# SSL Client Test - Testing Client Certificates
+# Client SSL Certificate Test - Testing Client Certificates
 
 This Next.js application is used to test client SSL/TLS certificates with three possible states:
 

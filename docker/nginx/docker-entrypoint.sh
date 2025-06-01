@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "Starting SSL Client Test Nginx..."
+echo "Starting Client SSL certificate test application Nginx..."
 
 # Get domain name from environment variable
 DOMAIN_NAME=${DOMAIN_NAME:-localhost}
