@@ -18,8 +18,12 @@ RUN npm run build
 FROM node:18-alpine
 WORKDIR /app
 
-# Copy built application
+# Install OpenSSL for certificate validation
+RUN apk add --no-cache openssl
+
+# Copy built application and dependencies
 COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/app ./app
 COPY --from=builder /app/server-nginx.js ./
@@ -30,15 +34,10 @@ COPY --from=builder /app/postcss.config.js ./
 COPY --from=builder /app/next-env.d.ts ./
 COPY --from=builder /app/docker/nginx/ca-certificates ./docker/nginx/ca-certificates
 
-# Install only production dependencies
-RUN npm ci --only=production
-
-# Install OpenSSL for certificate validation
-RUN apk add --no-cache openssl
-
-# Create non-root user
+# Create non-root user and change ownership
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
+RUN chown -R nextjs:nodejs /app
 USER nextjs
 
 # Expose port

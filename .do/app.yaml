@@ -1,0 +1,19 @@
+name: sslclient-test
+services:
+- name: web
+  source_dir: /
+  dockerfile_path: Dockerfile.do
+  github:
+    repo: your-username/sslclient-test
+    branch: main
+    deploy_on_push: true
+  http_port: 3001
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  routes:
+  - path: /
+  envs:
+  - key: NODE_ENV
+    value: production
+  - key: DOMAIN_NAME
+    value: your-app-name.ondigitalocean.app 
