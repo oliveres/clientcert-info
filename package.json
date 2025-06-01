@@ -1,0 +1,33 @@
+{
+  "name": "sslclient-test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "dev:nginx": "node server-nginx.js",
+    "build": "next build",
+    "test": "echo \"No test specified\"",
+    "start": "NODE_ENV=production node server.js",
+    "start:nginx": "NODE_ENV=production node server-nginx.js",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up",
+    "docker:down": "docker-compose down",
+    "certs:generate": "./generate-test-certificates.sh"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "next": "^14.0.0",
+    "node-fetch": "^3.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.0.0"
+  }
+}

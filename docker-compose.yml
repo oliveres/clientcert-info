@@ -1,0 +1,41 @@
+services:
+  # Node.js application
+  app:
+    build: .
+    container_name: sslclient-app
+    restart: unless-stopped
+    networks:
+      - app-network
+    environment:
+      - NODE_ENV=production
+      - DOMAIN_NAME=${DOMAIN_NAME:-localhost}
+    expose:
+      - "3001"
+
+  # Nginx reverse proxy with automatic certificate management
+  nginx:
+    build: 
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    container_name: sslclient-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # Persistence for Let's Encrypt certificates
+      - ./certbot/conf:/etc/letsencrypt:rw
+      - ./certbot/www:/var/www/certbot:rw
+      # Server certificates for localhost (development)
+      - ./certificates:/etc/nginx/certs/localhost:ro
+    environment:
+      - DOMAIN_NAME=${DOMAIN_NAME:-localhost}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-}
+    depends_on:
+      - app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge 
